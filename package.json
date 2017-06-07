@@ -1,0 +1,56 @@
+{
+  "name": "@smockle/periodic",
+  "version": "1.0.0",
+  "description": "Convert monthly price data to monthly return data",
+  "main": "lib/index.js",
+  "bin": {
+    "periodic": "./index.js"
+  },
+  "scripts": {
+    "prepare": "flow-typed install",
+    "start": "node index.js",
+    "test": "node test/index.js | colortape",
+    "coverage": "nyc --reporter=lcov node test/index.js | colortape",
+    "postcoverage": "nyc report",
+    "codeclimate": "codeclimate-test-reporter < ./coverage/lcov.info",
+    "prepublish": "npm test",
+    "precommit": "lint-staged"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/smockle/periodic.git"
+  },
+  "author": "Clay Miller <clay@smockle.com> (https://smockle.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/smockle/periodic/issues"
+  },
+  "homepage": "https://github.com/smockle/periodic#readme",
+  "devDependencies": {
+    "codeclimate-test-reporter": "^0.5.0",
+    "colortape": "^0.1.2",
+    "eslint": "^3.18.0",
+    "eslint-config-standard": "^7.1.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-node": "^4.2.1",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^2.1.1",
+    "flow-bin": "^0.42.0",
+    "flow-typed": "^2.0.0",
+    "husky": "^0.13.4",
+    "lint-staged": "^3.6.0",
+    "nyc": "^10.3.2",
+    "prettier-eslint-cli": "^3.1.2"
+  },
+  "lint-staged": {
+    "*.js": [
+      "./node_modules/.bin/prettier-eslint --write",
+      "git add"
+    ]
+  },
+  "dependencies": {
+    "lodash": "^4.17.4",
+    "moment": "^2.18.1",
+    "xlsx": "^0.9.13"
+  }
+}

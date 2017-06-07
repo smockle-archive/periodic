@@ -1,0 +1,9 @@
+node_modules
+coverage
+.nyc_output
+*.log
+.DS_Store
+data/*.xls
+data/*.xlsx
+!data/test.xls
+!data/test.xlsx

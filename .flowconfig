@@ -1,0 +1,10 @@
+[ignore]
+
+[include]
+
+[libs]
+
+[options]
+module.system=node
+munge_underscores=true
+suppress_comment= \\(.\\|\n\\)*\\@flow disable
