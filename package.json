@@ -29,17 +29,17 @@
     "codeclimate-test-reporter": "^0.5.0",
     "colortape": "^0.1.2",
     "eslint": "^3.18.0",
-    "eslint-config-standard": "^7.1.0",
+    "eslint-config-standard": "^10.2.1",
     "eslint-plugin-import": "^2.2.0",
-    "eslint-plugin-node": "^4.2.1",
+    "eslint-plugin-node": "^5.0.0",
     "eslint-plugin-promise": "^3.5.0",
-    "eslint-plugin-standard": "^2.1.1",
-    "flow-bin": "^0.42.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "flow-bin": "^0.47.0",
     "flow-typed": "^2.0.0",
     "husky": "^0.13.4",
     "lint-staged": "^3.6.0",
-    "nyc": "^10.3.2",
-    "prettier-eslint-cli": "^3.1.2"
+    "nyc": "^11.0.2",
+    "prettier-eslint-cli": "^4.0.4"
   },
   "lint-staged": {
     "*.js": [
@@ -50,6 +50,6 @@
   "dependencies": {
     "lodash": "^4.17.4",
     "moment": "^2.18.1",
-    "xlsx": "^0.9.13"
+    "xlsx": "^0.10.4"
   }
 }
