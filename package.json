@@ -7,7 +7,6 @@
     "periodic": "./index.js"
   },
   "scripts": {
-    "prepare": "flow-typed install",
     "start": "node index.js",
     "test": "node test/index.js | colortape",
     "coverage": "nyc --reporter=lcov node test/index.js | colortape",
