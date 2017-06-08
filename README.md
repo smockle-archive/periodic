@@ -1,4 +1,4 @@
-[![npm](https://img.shields.io/npm/v/periodic.svg)](https://www.npmjs.com/package/periodic)
+[![npm](https://img.shields.io/npm/v/@smockle/periodic.svg)](https://www.npmjs.com/package/@smockle/periodic)
 [![Build Status](https://travis-ci.org/smockle/periodic.svg?branch=master)](https://travis-ci.org/smockle/periodic)
 [![Code Climate](https://codeclimate.com/github/smockle/periodic/badges/gpa.svg)](https://codeclimate.com/github/smockle/periodic)
 [![Test Coverage](https://codeclimate.com/github/smockle/periodic/badges/coverage.svg)](https://codeclimate.com/github/smockle/periodic/coverage)
