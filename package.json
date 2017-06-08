@@ -1,6 +1,6 @@
 {
   "name": "@smockle/periodic",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Convert monthly price data to monthly return data",
   "main": "lib/index.js",
   "bin": {
