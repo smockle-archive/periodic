@@ -2,7 +2,7 @@
 [![Build Status](https://travis-ci.org/smockle/periodic.svg?branch=master)](https://travis-ci.org/smockle/periodic)
 [![Code Climate](https://codeclimate.com/github/smockle/periodic/badges/gpa.svg)](https://codeclimate.com/github/smockle/periodic)
 [![Test Coverage](https://codeclimate.com/github/smockle/periodic/badges/coverage.svg)](https://codeclimate.com/github/smockle/periodic/coverage)
-[![Known Vulnerabilities](https://snyk.io/test/npm/periodic/badge.svg)](https://snyk.io/test/npm/periodic)
+[![Known Vulnerabilities](https://snyk.io/test/github/smockle/periodic/badge.svg)](https://snyk.io/test/github/smockle/periodic)
 [![Greenkeeper badge](https://badges.greenkeeper.io/smockle/periodic.svg)](https://greenkeeper.io/)
 
 # periodic
