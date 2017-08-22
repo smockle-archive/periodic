@@ -1,15 +1,9 @@
-const {
-  Periodic,
-  sortByDate,
-  getRangeInMonths,
-  getReturn,
-  parseCurrency,
-  datedRowsToWorksheet
-} = require('../lib/index.js')
-const { get, set, round } = require('lodash')
-const path = require('path')
-const test = require('tape')
-const util = require('util')
+import Periodic from '../lib/periodic'
+import get from 'lodash/get'
+import set from 'lodash/set'
+import path from 'path'
+import test from 'tape'
+import util from 'util'
 const workbookPath = path.resolve('./data/test.xlsx')
 
 test('Periodic.constructor', t => {
@@ -132,112 +126,4 @@ test('Periodic.getMonthlyReturn', t => {
     ],
     'getMonthlyReturn'
   )
-})
-
-test('sortByDate', t => {
-  t.deepEqual(
-    sortByDate([
-      { Date: new Date(Date.UTC(1995, 9, 4, 0, 0, 0)), NAV: '$101.2887' },
-      { Date: new Date(Date.UTC(1995, 9, 3, 0, 0, 0)), NAV: '$101.2731' },
-      { Date: new Date(Date.UTC(1995, 9, 2, 0, 0, 0)), NAV: '$101.2539' }
-    ]),
-    [
-      { Date: new Date(Date.UTC(1995, 9, 2, 0, 0, 0)), NAV: '$101.2539' },
-      { Date: new Date(Date.UTC(1995, 9, 3, 0, 0, 0)), NAV: '$101.2731' },
-      { Date: new Date(Date.UTC(1995, 9, 4, 0, 0, 0)), NAV: '$101.2887' }
-    ],
-    'initially sorted'
-  )
-
-  t.deepEqual(
-    sortByDate([
-      { Date: new Date(Date.UTC(1995, 9, 3, 0, 0, 0)), NAV: '$101.2731' },
-      { Date: new Date(Date.UTC(1995, 9, 4, 0, 0, 0)), NAV: '$101.2887' },
-      { Date: new Date(Date.UTC(1995, 9, 2, 0, 0, 0)), NAV: '$101.2539' }
-    ]),
-    [
-      { Date: new Date(Date.UTC(1995, 9, 2, 0, 0, 0)), NAV: '$101.2539' },
-      { Date: new Date(Date.UTC(1995, 9, 3, 0, 0, 0)), NAV: '$101.2731' },
-      { Date: new Date(Date.UTC(1995, 9, 4, 0, 0, 0)), NAV: '$101.2887' }
-    ],
-    'initially unsorted'
-  )
-  t.end()
-})
-
-test('getRangeInMonths', t => {
-  t.equal(
-    getRangeInMonths(new Date(2016, 12), new Date(2016, 12)),
-    1,
-    'one month, same year'
-  )
-  t.equal(
-    getRangeInMonths(new Date(2016, 11), new Date(2016, 12)),
-    2,
-    'two months, same year'
-  )
-  t.equal(
-    getRangeInMonths(new Date(2016, 12), new Date(2017, 1)),
-    2,
-    'two months'
-  )
-  t.equal(
-    getRangeInMonths(new Date(2016, 12), new Date(2017, 2)),
-    3,
-    'three months'
-  )
-  t.equal(
-    getRangeInMonths(new Date(2016, 12), new Date(2017, 11)),
-    12,
-    'twelve months'
-  )
-  t.equal(
-    getRangeInMonths(new Date(2016, 12), new Date(2017, 12)),
-    13,
-    'thirteen months'
-  )
-  t.equal(
-    getRangeInMonths(new Date(2016, 12), new Date(2018, 1)),
-    14,
-    'fourteen months'
-  )
-  t.end()
-})
-
-test('getReturn', t => {
-  t.equal(round(getReturn(101.6569, 102.0835), 4), 0.4196, 'positive return')
-  t.equal(round(getReturn(102.0835, 101.6569), 4), -0.4179, 'negative return')
-  t.equal(round(getReturn(100, 100), 4), 0, 'zero return')
-  t.end()
-})
-
-test('parseCurrency', t => {
-  t.equal(round(parseCurrency('$101.6569'), 4), 101.6569, 'with cents')
-  t.equal(round(parseCurrency('$101'), 4), 101, 'without cents')
-  t.equal(round(parseCurrency('$0.0000'), 4), 0, 'zero')
-  t.end()
-})
-
-test('datedRowsToWorksheet', t => {
-  t.deepEqual(
-    datedRowsToWorksheet([
-      {
-        Date: new Date(Date.UTC(1995, 10, 30, 0, 0, 0)),
-        Return: 0.41964687099449977
-      },
-      {
-        Date: new Date(Date.UTC(1995, 11, 29, 0, 0, 0)),
-        Return: 0.44061968878417784
-      }
-    ]),
-    {
-      A1: { t: 'd', v: new Date(Date.UTC(1995, 10, 30, 0, 0, 0)) },
-      B1: { t: 'n', v: 0.41964687099449977 },
-      A2: { t: 'd', v: new Date(Date.UTC(1995, 11, 29, 0, 0, 0)) },
-      B2: { t: 'n', v: 0.44061968878417784 },
-      '!ref': 'A1:B2'
-    },
-    'datedRowsToWorksheet'
-  )
-  t.end()
 })

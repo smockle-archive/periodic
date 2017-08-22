@@ -1,5 +1,5 @@
-// flow-typed signature: 53b581d81115b53eaf3a74ae963c4f43
-// flow-typed version: ba3c3d2dca/lodash_v4.x.x/flow_>=v0.38.x <=v0.46.x
+// flow-typed signature: 5987de2b8b7cd774785cd3b8c488f96e
+// flow-typed version: 8daeabda84/lodash_v4.x.x/flow_>=v0.47.x
 
 declare module 'lodash' {
   declare type TemplateSettings = {
@@ -77,8 +77,8 @@ declare module 'lodash' {
     dropRightWhile<T>(array: ?Array<T>, predicate?: Predicate<T>): Array<T>;
     dropWhile<T>(array: ?Array<T>, predicate?: Predicate<T>): Array<T>;
     fill<T, U>(array: ?Array<T>, value: U, start?: number, end?: number): Array<T|U>;
-    findIndex<T>(array: ?Array<T>, predicate?: Predicate<T>): number;
-    findLastIndex<T>(array: ?Array<T>, predicate?: Predicate<T>): number;
+    findIndex<T>(array: ?Array<T>, predicate?: Predicate<T>, fromIndex?: number): number;
+    findLastIndex<T>(array: ?Array<T>, predicate?: Predicate<T>, fromIndex?: number): number;
     // alias of _.head
     first<T>(array: ?Array<T>): T;
     flatten<T,X>(array: Array<Array<T>|X>): Array<T|X>;
@@ -179,9 +179,9 @@ declare module 'lodash' {
     every<T: Object>(object: T, iteratee?: OIteratee<T>): bool;
     filter<T>(array: ?Array<T>, predicate?: Predicate<T>): Array<T>;
     filter<A, T: {[id: string]: A}>(object: T, predicate?: OPredicate<A, T>): Array<A>;
-    find<T>(array: ?Array<T>, predicate?: Predicate<T>): T|void;
-    find<V, A, T: {[id: string]: A}>(object: T, predicate?: OPredicate<A, T>): V;
-    findLast<T>(array: ?Array<T>, predicate?: Predicate<T>): T|void;
+    find<T>(array: ?Array<T>, predicate?: Predicate<T>, fromIndex?: number): T|void;
+    find<V, A, T: {[id: string]: A}>(object: T, predicate?: OPredicate<A, T>, fromIndex?: number): V;
+    findLast<T>(array: ?Array<T>, predicate?: Predicate<T>, fromIndex?: number): T|void;
     findLast<V, A, T: {[id: string]: A}>(object: T, predicate?: OPredicate<A, T>): V;
     flatMap<T, U>(array: ?Array<T>, iteratee?: FlatMapIteratee<T, U>): Array<U>;
     flatMap<T: Object, U>(object: T, iteratee?: OFlatMapIteratee<T, U>): Array<U>;
@@ -193,15 +193,15 @@ declare module 'lodash' {
     forEach<T: Object>(object: T, iteratee?: OIteratee<T>): T;
     forEachRight<T>(array: ?Array<T>, iteratee?: Iteratee<T>): Array<T>;
     forEachRight<T: Object>(object: T, iteratee?: OIteratee<T>): T;
-    groupBy<V, T>(array: ?Array<T>, iteratee?: ValueOnlyIteratee<T>): {[key: V]: ?Array<T>};
-    groupBy<V, A, T: {[id: string]: A}>(object: T, iteratee?: ValueOnlyIteratee<A>): {[key: V]: ?Array<A>};
+    groupBy<V, T>(array: ?Array<T>, iteratee?: ValueOnlyIteratee<T>): {[key: V]: Array<T>};
+    groupBy<V, A, T: {[id: string]: A}>(object: T, iteratee?: ValueOnlyIteratee<A>): {[key: V]: Array<A>};
     includes<T>(array: ?Array<T>, value: T, fromIndex?: number): bool;
     includes<T: Object>(object: T, value: any, fromIndex?: number): bool;
     includes(str: string, value: string, fromIndex?: number): bool;
     invokeMap<T>(array: ?Array<T>, path: ((value: T) => Array<string>|string)|Array<string>|string, ...args?: Array<any>): Array<any>;
     invokeMap<T: Object>(object: T, path: ((value: any) => Array<string>|string)|Array<string>|string, ...args?: Array<any>): Array<any>;
     keyBy<T, V>(array: ?Array<T>, iteratee?: ValueOnlyIteratee<T>): {[key: V]: ?T};
-    keyBy<V, A, T: {[id: string]: A}>(object: T, iteratee?: ValueOnlyIteratee<A>): {[key: V]: ?A};
+    keyBy<V, A, I, T: {[id: I]: A}>(object: T, iteratee?: ValueOnlyIteratee<A>): {[key: V]: ?A};
     map<T, U>(array: ?Array<T>, iteratee?: MapIterator<T, U>): Array<U>;
     map<V, T: Object, U>(object: ?T, iteratee?: OMapIterator<V, T, U>): Array<U>;
     map(str: ?string, iteratee?: (char: string, index: number, str: string) => any): string;
@@ -303,7 +303,7 @@ declare module 'lodash' {
     isSafeInteger(value: any): bool;
     isSet(value: any): bool;
     isString(value: string): true;
-    isString(value: number|Function|void|null|Object|Array<any>): false;
+    isString(value: number|bool|Function|void|null|Object|Array<any>): false;
     isSymbol(value: any): bool;
     isTypedArray(value: any): bool;
     isUndefined(value: any): bool;
@@ -457,16 +457,16 @@ declare module 'lodash' {
     words(string?: string, pattern?: RegExp|string): Array<string>;
 
     // Util
-    attempt(func: Function): any;
+    attempt(func: Function, ...args: Array<any>): any;
     bindAll(object?: ?Object, methodNames: Array<string>): Object;
     bindAll(object?: ?Object, ...methodNames: Array<string>): Object;
     cond(pairs: NestedArray<Function>): Function;
     conforms(source: Object): Function;
     constant<T>(value: T): () => T;
-    defaultTo<T1:string|boolean|Object,T2>(value: T1, defaultValue: T2): T1;
+    defaultTo<T1:string|boolean|Object,T2>(value: T1, default: T2): T1;
     // NaN is a number instead of its own type, otherwise it would behave like null/void
-    defaultTo<T1:number,T2>(value: T1, defaultValue: T2): T1|T2;
-    defaultTo<T1:void|null,T2>(value: T1, defaultValue: T2): T2;
+    defaultTo<T1:number,T2>(value: T1, default: T2): T1|T2;
+    defaultTo<T1:void|null,T2>(value: T1, default: T2): T2;
     flow(...funcs?: Array<Function>): Function;
     flow(funcs?: Array<Function>): Function;
     flowRight(...funcs?: Array<Function>): Function;
@@ -511,4 +511,28 @@ declare module 'lodash' {
   }
 
   declare var exports: Lodash;
+}
+
+declare module 'lodash/findLast' {
+  declare export function findLast<T>(array: ?Array<T>, predicate?: Predicate<T>, fromIndex?: number): T|void;
+  declare export default function findLast<V, A, T: {[id: string]: A}>(object: T, predicate?: OPredicate<A, T>): V;
+}
+
+declare module 'lodash/get' {
+  declare export default function get(object?: ?Object|?Array<any>, path?: ?Array<string>|string, defaultValue?: any): any;
+}
+
+declare module 'lodash/round' {
+  declare export default function round(number: number, precision?: number): number;
+}
+
+declare module 'lodash/set' {
+  declare export default function set(object?: ?Object, path?: ?Array<string>|string, value: any): Object;
+}
+
+declare module 'lodash/sortBy' {
+  declare export function sortBy<T>(array: ?Array<T>, ...iteratees?: Array<Iteratee<T>>): Array<T>;
+  declare export function sortBy<T>(array: ?Array<T>, iteratees?: Array<Iteratee<T>>): Array<T>;
+  declare export function sortBy<V, T: Object>(object: T, ...iteratees?: Array<OIteratee<T>>): Array<V>;
+  declare export default function sortBy<V, T: Object>(object: T, iteratees?: Array<OIteratee<T>>): Array<V>;
 }

@@ -5,6 +5,17 @@
 [libs]
 
 [options]
+# Run Flow on .js, .mjs, .jsx, .json files
+module.file_ext=.js
+module.file_ext=.mjs
+module.file_ext=.jsx
+module.file_ext=.json
+
+# Use the Node.js module system to resolve `import` and `require`
 module.system=node
+
+# Treat underscore-prefixed class properties and methods as private
 munge_underscores=true
+
+# Ignore next line with /* @flow disable */ magic comment
 suppress_comment= \\(.\\|\n\\)*\\@flow disable

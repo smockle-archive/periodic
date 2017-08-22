@@ -4,12 +4,12 @@
   "description": "Convert monthly price data to monthly return data",
   "main": "lib/index.js",
   "bin": {
-    "periodic": "./index.js"
+    "periodic": "bin/index"
   },
   "scripts": {
-    "start": "node index.js",
-    "test": "node test/index.js | colortape",
-    "coverage": "nyc --reporter=lcov node test/index.js | colortape",
+    "start": "node -r @std/esm bin/index.mjs",
+    "test": "node -r @std/esm test/index.mjs | colortape",
+    "coverage": "nyc --require @std/esm --extension .mjs --reporter=lcov node -r @std/esm test/index.mjs | colortape",
     "postcoverage": "nyc report",
     "prepublish": "npm test",
     "precommit": "lint-staged"
@@ -37,16 +37,14 @@
     "flow-typed": "^2.0.0",
     "husky": "^0.13.4",
     "lint-staged": "^3.6.0",
-    "nyc": "^11.0.2",
+    "nyc": "^11.1.0",
     "prettier-eslint-cli": "^4.0.4"
   },
   "lint-staged": {
-    "*.js": [
-      "./node_modules/.bin/prettier-eslint --write",
-      "git add"
-    ]
+    "*.{js,mjs}": ["./node_modules/.bin/prettier-eslint --write", "git add"]
   },
   "dependencies": {
+    "@std/esm": "^0.5.1",
     "lodash": "^4.17.4",
     "moment": "^2.18.1",
     "xlsx": "^0.10.4"
