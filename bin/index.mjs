@@ -5,16 +5,15 @@ import { Periodic } from '../lib/index'
 import fs from 'fs'
 import path from 'path'
 
-// TODO: Remove this import when `import.meta` is accepted: https://github.com/tc39/proposal-import-meta
+// TODO: Replace this when `import.meta` is accepted: https://github.com/tc39/proposal-import-meta
 // See also: https://github.com/standard-things/esm/issues/52
-import cjs from './cjs.js'
-const __dirname = cjs.__dirname
+const dirname = __dirname
 
 const input /*: string */ = process.argv.slice(2)[0]
 const output /*: string */ = process.argv.slice(2)[1]
 
 function getVersion () /*: string */ {
-  const filename = path.resolve(__dirname, '../package.json')
+  const filename = path.resolve(dirname, '../package.json')
   const raw = fs.readFileSync(filename, 'utf8')
   if (!raw) {
     return ''
