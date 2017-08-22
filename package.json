@@ -1,6 +1,6 @@
 {
   "name": "@smockle/periodic",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "Convert monthly price data to monthly return data",
   "main": "lib/index.js",
   "bin": {
@@ -41,7 +41,10 @@
     "prettier-eslint-cli": "^4.0.4"
   },
   "lint-staged": {
-    "*.{js,mjs}": ["./node_modules/.bin/prettier-eslint --write", "git add"]
+    "*.{js,mjs}": [
+      "./node_modules/.bin/prettier-eslint --write",
+      "git add"
+    ]
   },
   "dependencies": {
     "@std/esm": "^0.5.1",
