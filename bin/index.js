@@ -1,5 +1,5 @@
 #!/usr/bin/env node
 // @flow
 
-require('@std/esm')
+require = require('@std/esm')(module)
 require('./index.mjs')
