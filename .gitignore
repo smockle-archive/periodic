@@ -1,7 +1,7 @@
 node_modules
 coverage
-.nyc_output
 .esm-cache
+.nyc_output
 *.log
 .DS_Store
 data/*.xls

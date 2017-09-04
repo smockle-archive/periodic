@@ -1,8 +1,8 @@
 coverage
-.nyc_output
 .esm-cache
+.nyc_output
+.vscode
 *.log
-.DS_Store
 data/*.xls
 data/*.xlsx
 !data/test.xls
