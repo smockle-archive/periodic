@@ -3,6 +3,7 @@
   "version": "2.0.1",
   "description": "Convert monthly price data to monthly return data",
   "main": "lib/index.js",
+  "module": "lib/index.mjs",
   "bin": {
     "periodic": "bin/index"
   },
