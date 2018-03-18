@@ -16,6 +16,7 @@ Run `npm install --save @smockle/periodic` to add `periodic` to your project.
 ## Usage
 
 ### Shell
+
 ```Bash
 $ periodic "/path/to/input/file.xlsx" "/path/to/output/file.xlsx"
 ```
