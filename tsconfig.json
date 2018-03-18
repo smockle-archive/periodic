@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "module": "es2015",
+    "target": "es2017",
+    "rootDir": "src",
+    "outDir": "dist",
+    "sourceMap": false,
+    "strict": true,
+    "moduleResolution": "node"
+  },
+  "files": [
+    "src/bin/index.js.ts",
+    "src/bin/index.mjs.ts",
+    "src/lib/dated-rows-to-worksheet.mjs.ts",
+    "src/lib/get-date.mjs.ts",
+    "src/lib/get-range-in-months.mjs.ts",
+    "src/lib/get-return.mjs.ts",
+    "src/lib/index.js.ts",
+    "src/lib/index.mjs.ts",
+    "src/lib/parse-currency.mjs.ts",
+    "src/lib/periodic.mjs.ts",
+    "src/lib/sort-by-date.mjs.ts",
+    "src/lib/transform-date.mjs.ts",
+    "src/lib/types.mjs.ts"
+  ]
+}

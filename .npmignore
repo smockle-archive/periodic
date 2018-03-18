@@ -1,9 +1,0 @@
-coverage
-.esm-cache
-.nyc_output
-.vscode
-*.log
-data/*.xls
-data/*.xlsx
-!data/test.xls
-!data/test.xlsx
