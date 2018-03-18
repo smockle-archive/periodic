@@ -2,49 +2,49 @@
   "name": "@smockle/periodic",
   "version": "2.0.3",
   "description": "Convert monthly price data to monthly return data",
-  "main": "lib/index.js",
-  "module": "lib/index.mjs",
+  "files": [
+    "dist"
+  ],
+  "main": "dist/lib/index",
+  "types": "dist/lib/index.d.ts",
   "bin": {
-    "periodic": "bin/index.js"
+    "periodic": "dist/bin/index.js"
   },
   "scripts": {
-    "start": "node -r @std/esm bin/index.mjs",
-    "debug": "node --nolazy --inspect-brk=5858 -r @std/esm bin/index.mjs",
-    "test": "node -r @std/esm test/index.mjs | colortape",
-    "coverage": "nyc --require @std/esm --extension .mjs --reporter=lcov node test/index.mjs | colortape",
-    "postcoverage": "nyc report",
-    "prepublishOnly": "npm test",
+    "build": "bash scripts/build.sh",
+    "build:windows": "call scripts/build.bat",
+    "start": "node -r @std/esm dist/bin/index.mjs",
+    "debug": "node --nolazy --inspect-brk=5858 -r @std/esm dist/bin/index.mjs",
+    "test": "jest",
+    "_version": "bash scripts/version.sh",
     "precommit": "lint-staged"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/smockle/periodic.git"
   },
-  "author": "Clay Miller <clay@smockle.com> (https://smockle.com)",
-  "license": "ISC",
+  "author": "Clay Miller <clay@smockle.com> (https://www.smockle.com)",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/smockle/periodic/issues"
   },
   "homepage": "https://github.com/smockle/periodic#readme",
   "devDependencies": {
+    "@types/jest": "^22.2.0",
+    "@types/lodash": "^4.14.105",
+    "@types/luxon": "^0.5.0",
+    "@types/node": "^9.4.7",
     "codecov": "^3.0.0",
-    "colortape": "^0.1.2",
-    "eslint": "^4.5.0",
-    "eslint-config-standard": "^11.0.0",
-    "eslint-plugin-import": "^2.2.0",
-    "eslint-plugin-node": "^6.0.0",
-    "eslint-plugin-promise": "^3.5.0",
-    "eslint-plugin-standard": "^3.0.1",
-    "flow-bin": "^0.68.0",
-    "flow-typed": "^2.0.0",
     "husky": "^0.14.3",
+    "jest": "^22.4.2",
     "lint-staged": "^7.0.0",
-    "nyc": "^11.1.0",
-    "prettier-eslint-cli": "^4.3.0"
+    "prettier": "^1.11.1",
+    "ts-jest": "^22.4.1",
+    "typescript": "^2.8.0-rc"
   },
   "lint-staged": {
-    "*.{js,mjs}": [
-      "./node_modules/.bin/prettier-eslint --write",
+    "*.{js,mjs,ts}": [
+      "./node_modules/.bin/prettier --write",
       "git add"
     ]
   },
@@ -54,7 +54,7 @@
   "dependencies": {
     "@std/esm": "^0.25.0",
     "lodash": "^4.17.4",
-    "moment": "^2.18.1",
-    "xlsx": "^0.12.0"
+    "luxon": "^0.5.8",
+    "xlsx": "^0.12.5"
   }
 }
