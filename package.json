@@ -54,7 +54,7 @@
   "dependencies": {
     "@std/esm": "^0.25.0",
     "lodash": "^4.17.4",
-    "luxon": "^0.5.8",
+    "luxon": "^1.0.0",
     "xlsx": "^0.12.5"
   }
 }
