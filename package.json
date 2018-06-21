@@ -1,6 +1,6 @@
 {
   "name": "@smockle/periodic",
-  "version": "2.0.10",
+  "version": "2.0.11",
   "description": "Convert monthly price data to monthly return data",
   "files": [
     "dist"
